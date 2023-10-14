@@ -1,0 +1,279 @@
+<<<<<<< Updated upstream
+@import url("https://fonts.googleapis.com/css?family=Metamorphous|Montaga|Uncial+Antiqua");
+@font-face {
+    font-family: AnironC;
+    src: url("../fonts/anicm.ttf");
+}
+
+@page {
+    size: a4 portrait;
+    margin: 20mm;
+}
+
+@media screen {
+    html {
+        background: gray
+    }
+
+    body {
+        max-width: 50em;
+        margin: 0 auto;
+        background: white;
+        padding: 2em;
+        columns: 20em;
+    }
+
+    aside {
+        background: #ddd;
+        padding: 1em;
+    }
+}
+
+body {
+    columns: 2;
+    widows: 0;
+    orphans: 0;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    margin: 0 0 5mm 0;
+    padding: 0;
+}
+
+hr {
+    column-span: all;
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 1.5em 0;
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+h1 {
+    font: 20pt/1.40 'AnironC';
+    column-span: all;
+    page-break-before: always;
+}
+
+h2 {
+    font: 14pt/1.20 'AnironC';
+    column-span: all;
+}
+
+.break {
+    column-span: all;
+    page-break-before: always;
+}
+
+.readaloud {
+    font: 11pt/1.40 Metamorphous;
+    background: #eee;
+    padding: 0.8em;
+    border-radius: 6px;
+}
+
+.rumors {
+    font: 10pt/1.10 Montaga;
+    padding-left: 2mm;
+}
+
+.dmnotes {
+    font: 12pt/1.40 Montaga;
+    text-align: justify;
+}
+
+.boxedinfo {
+    background: #ddd;
+    padding: 1em;
+    border-radius: 6px;
+}
+
+.fulltable {
+    font: 12pt/1.40 Montaga;
+    text-align: left;
+    column-span: all;
+    margin-top: 5mm;
+}
+
+.fulltable table {
+    width: 100%;
+}
+
+table.bordered, .bordered td {
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: left;
+    padding-left: 3mm;
+}
+
+table.bordered, .bordered th {
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table.striped tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+section.creaturebox {
+    padding-right: 1.2em;
+}
+
+div.statsblock {
+    padding: 0.1em 0 0.4em 0;
+    font: 11pt/1.20 Montaga;
+    text-align: justify;
+}
+
+
+div.extrablock {
+    padding: 0.1em 0 0.4em 0;
+    font: 10pt/1.10 Montaga;
+    text-align: justify;
+}
+
+span.cr {
+    float: right;
+    font: 10pt/1.00 Montaga;
+    padding-top: 1mm;
+}
+=======
+    @import url("https://fonts.googleapis.com/css?family=Metamorphous|Montaga|Uncial+Antiqua");
+    @font-face {
+        font-family: AnironC;
+        src: url("../fonts/anicm.ttf");
+    }
+
+    @page {
+        size: a4 portrait;
+        margin: 20mm;
+    }
+
+    body {
+        columns: 2;
+        widows: 2;
+        orphans: 2;
+    }
+
+    header {
+        margin: 0;
+        padding: 0;
+    }
+
+    section {
+        margin: 0 0 5mm 0;
+        padding: 0;
+    }
+
+    hr {
+        column-span: all;
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 1.5em 0;
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
+    }
+
+    @media screen {
+        html {
+            background: gray
+        }
+
+        body {
+            max-width: 50em;
+            margin: 0 auto;
+            background: white;
+            padding: 2em;
+            columns: 20em
+        }
+
+        aside {
+            background: #ddd;
+            padding: 1em;
+        }
+    }
+
+    h1 {
+        font: 20pt/1.40 'AnironC';
+        column-span: all;
+        page-break-before: always;
+    }
+
+    h2 {
+        font: 14pt/1.20 'AnironC';
+        column-span: all;
+    }
+
+    .break {
+        column-span: all;
+        page-break-before: always;
+    }
+
+    .readaloud {
+        font: 11pt/1.40 Metamorphous;
+        background: #eee;
+        padding: 0.8em;
+        border-radius: 6px;
+    }
+
+    .rumors {
+        font: 10pt/1.10 Montaga;
+        padding-left: 2mm;
+    }
+
+    .dmnotes {
+        font: 12pt/1.40 Montaga;
+        text-align: justify;
+    }
+
+    .boxedinfo {
+        background: #ddd;
+        padding: 1em;
+        border-radius: 6px;
+    }
+
+    .fulltable {
+        font: 12pt/1.40 Montaga;
+        text-align: left;
+        column-span: all;
+        margin-top: 5mm;
+    }
+
+    .fulltable table {
+        width: 100%;
+    }
+
+    table.bordered, .bordered td {
+        border: 1px solid;
+        border-collapse: collapse;
+        text-align: left;
+        padding-left: 3mm;
+    }
+
+    table.bordered, .bordered th {
+        border: 1px solid;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    table.striped tr:nth-child(even) {
+        background-color: #eeeeee;
+    }
+
+    section.creaturebox {
+        padding-right: 1.2em;
+    }
+    div.statsblock {
+        padding: 0.1em 0 0.4em 0;
+        font: 11pt/1.30 Montaga;
+        text-align: justify;
+    }
+>>>>>>> Stashed changes

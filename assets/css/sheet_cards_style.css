@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Metamorphous|Montaga|Uncial+Antiqua");
+@font-face {
+    font-family: AnironC;
+    src: url("../fonts/anicm.ttf");
+}
+
+@page {
+    size: a4 portrait;
+    margin: 20mm;
+}
+
+body {
+    columns: 2;
+    widows: 0;
+    orphans: 0;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    margin: 0 0 0 0;
+    padding: 0;
+}
+
