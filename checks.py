@@ -62,16 +62,17 @@ class CATPROB(Enum):
     ESPERTO = VALPROB.SIXTEEN.value + VALPROB.SEVENTEEN.value
     ECCEZIONALE = VALPROB.EIGHTEEN.value
 
-print("Probabilità di essere:")
+print("\nProbabilità di avere una capacità:")
 for cat in CATEGORY:
-    print(f"\t{cat.name}: {getattr(CATPROB, cat.name).value}")
+    val = cat.value[0] if cat.value[0] == cat.value[1] else f"da {cat.value[0]} a {cat.value[1]}"
+    print(f"\t{cat.name} ({val}) : {getattr(CATPROB, cat.name).value}")
 
 class BASE_SUCCESS_RATIO(Enum):
     # expected success ratio for a normal category
-    EASY = 0.99
+    EASY = 1
     NORMAL = 0.80
     HARD = 0.5
-    CHALLENGING = 0.01
+    CHALLENGING = 0
 
 class UP_CATEGORY_WEIGHT(Enum):
     # the more challenging the task, the less helpful becomes the mastery
@@ -79,12 +80,12 @@ class UP_CATEGORY_WEIGHT(Enum):
     EASY = 0.3
     NORMAL = 0.2
     HARD = 0.1
-    CHALLENGING = 0.05
+    CHALLENGING = 0.1
 
 class DOWN_CATEGORY_WEIGHT(Enum):
     # the more challenging the task, the more harmful becomes the lack of mastery
     # (you can still play football with friends, you cant dance with no training)
-    EASY = 0.2
+    EASY = 0.25
     NORMAL = 0.3
     HARD = 0.4
     CHALLENGING = 0.45
@@ -107,16 +108,18 @@ def task_success_ratios(cat):
 
     if CATEGORY.is_less(current_cat, CATEGORY.NORMALE):
         success_ratio = {k.name: getattr(BASE_SUCCESS_RATIO, k.name).value - getattr(DOWN_CATEGORY_WEIGHT, k.name).value * multiplier for k in BASE_SUCCESS_RATIO}
+        output = Enum(f"{cat.name}_SUCCESS_RATIO", {k:max(min(round(v,2),1), 0) for k,v in success_ratio.items()})
     if CATEGORY.is_more(current_cat, CATEGORY.NORMALE):
         success_ratio = {k.name: getattr(BASE_SUCCESS_RATIO, k.name).value + getattr(UP_CATEGORY_WEIGHT, k.name).value * multiplier for k in BASE_SUCCESS_RATIO}
-    
-    return Enum(f"{cat.name}_SUCCESS_RATIO", {k:max(min(round(v,2),1), 0) for k,v in success_ratio.items()})
+        tmp = Enum("tmp", {k:max(min(round(v,2),1), 0) for k,v in reversed(success_ratio.items())}.items())
+        output = Enum(f"{cat.name}_SUCCESS_RATIO", {k.name:k.value for k in reversed(tmp)})
+    return output
 
 
-print(f"Probabilità di successo per:")
+print(f"\nProbabilità di successo avendo una capacità:")
 for cat in CATEGORY:
     print(f"{cat.name}")
-    print([(k.name, k.value) for k in task_success_ratios(cat)])
+    print(f"task: {[(k.name, k.value) for k in task_success_ratios(cat)]}")
 
 def d4():
     return np.random.randint(1,5, SZ)
