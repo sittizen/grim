@@ -4,4 +4,4 @@
 - il limite è strvagante architettonicamente perchè ognuno ci mette il suo pezzo
 - un golem di pietra ricoperto di muschio è perso nella foresta, ha un carattere timido e bonario ma forza 20
 - incontro fra lupi normali e lupi corrotti al limite della corruzione
-- 
+- il capo di una delle tribù goblinoidi è un umano che vive recluso ? il capo degli gnoll ?

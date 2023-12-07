@@ -1,0 +1,33 @@
+{
+  "settings": {
+    "migrated": 3,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "none",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "FarAddressCard",
+      "FarCompass",
+      "FarLightbulb",
+      "FarAddressBook",
+      "FarBell"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": false,
+    "iconInTitleEnabled": false,
+    "iconInFrontmatterEnabled": false,
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true
+  },
+  "Idee.md": "FarLightbulb",
+  "Campaign/PCs.md": "FarAddressBook",
+  "Campaign/Events.md": "FarCompass",
+  "Campaign/next session.md": "FarBell"
+}
