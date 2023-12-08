@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Campaign/Malattia.md",
+                "file": "Campaign/Events.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Campaign/Malattia.md",
+                "file": "Campaign/Events.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Campaign/Malattia.md",
+                "file": "Campaign/Events.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Campaign/Malattia.md"
+                "file": "Campaign/Events.md"
               }
             }
           }
@@ -147,23 +147,25 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "e2d052833599d81d",
+  "active": "bdb3fdbe5dbc1298",
   "lastOpenFiles": [
+    "Campaign/World/Locations.md",
+    "Campaign/World/NPCs.md",
+    "Campaign/Events.md",
+    "Campaign/Malattia.md",
+    "Campaign/next session.md",
     "Campaign/PCs.md",
+    "Excalidraw/Drawing 2023-12-04 06.51.20.excalidraw.md",
+    "Idee.md",
     "Campaign/NPCs/Titania, dea elfica delle foreste.md",
     "Campaign/NPCs/NATURE.md",
     "Campaign/NPCs/core.md",
-    "Campaign/Malattia.md",
-    "Campaign/next session.md",
-    "Idee.md",
     "Untitled.canvas",
-    "Excalidraw/Drawing 2023-12-04 06.51.20.excalidraw.md",
     "Excalidraw",
     "Untitled 1.canvas",
-    "Campaign/NPCs",
+    "Campaign/World",
     "Campaign/NPCs.md",
     "Campaign.md",
-    "Campaign/Events.md",
     "Campaign"
   ]
 }

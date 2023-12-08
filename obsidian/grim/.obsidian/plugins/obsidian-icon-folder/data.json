@@ -6,11 +6,11 @@
     "emojiStyle": "none",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "FarPenToSquare",
+      "FarCalendarDays",
       "FarAddressCard",
       "FarCompass",
-      "FarLightbulb",
-      "FarAddressBook",
-      "FarBell"
+      "FarLightbulb"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -28,6 +28,8 @@
   },
   "Idee.md": "FarLightbulb",
   "Campaign/PCs.md": "FarAddressBook",
-  "Campaign/Events.md": "FarCompass",
-  "Campaign/next session.md": "FarBell"
+  "Campaign/Events.md": "FarBell",
+  "Campaign/next session.md": "FarPenToSquare",
+  "Campaign/World/NPCs.md": "FarAddressCard",
+  "Campaign/World/Locations.md": "FarCompass"
 }
