@@ -31,5 +31,7 @@
   "Campaign/Events.md": "FarBell",
   "Campaign/next session.md": "FarPenToSquare",
   "Campaign/World/NPCs.md": "FarAddressCard",
-  "Campaign/World/Locations.md": "FarCompass"
+  "Campaign/World/Locations.md": "FarCompass",
+  "Campaign/World/History Timeline.md": "FarCalendarDays",
+  "Campaign/Diario.md": "FarCalendarDays"
 }
