@@ -6,11 +6,11 @@
     "emojiStyle": "none",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "FarImage",
       "FarPenToSquare",
       "FarCalendarDays",
       "FarAddressCard",
-      "FarCompass",
-      "FarLightbulb"
+      "FarCompass"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -33,5 +33,6 @@
   "Campaign/World/NPCs.md": "FarAddressCard",
   "Campaign/World/Locations.md": "FarCompass",
   "Campaign/World/History Timeline.md": "FarCalendarDays",
-  "Campaign/Diario.md": "FarCalendarDays"
+  "Campaign/Diario.md": "FarCalendarDays",
+  "Campaign/World/Weather.md": "FarImage"
 }

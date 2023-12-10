@@ -1,4 +1,4 @@
-
+- il pugnale "toglie la vita", non ha particolari bonus ma funziona anche su lich e simili perchè ferisce all'origine
 - mancano 11 giorni al disfacimento del cerchio
 - Gislay può abbassare la temperatura a piacere, si tramuta incazzandosi un po' come le fate ( ghigno immenso cn file di denti )
 - la droga trovata, scatolina di polvere blu, alza la temperatura corporea di 20 gradi, in condizioni normali fa svenire con save epico su Po e permette di passare tranquillamente una notte invernale all'aperto.
@@ -15,3 +15,4 @@
 - la volpe si lamenta di non avere la gabbia
 - la locandiera chiede di cercare la corteccia dell'albero di ashven per togliere l'odore dalle stanze ( e dalla stalla, ha seppellito le carcasse dei pipstrelli )
 - non han rimosso il pugnale sigillo dalla caverna
+- henchman : Cantastorie più giovane di quello che sembra, intrattiene gli adulti e terrorizza i bambini con le sue storie. Ha un passato violento e ora lavora solo per soldi, i lupi lo terrorizzano.

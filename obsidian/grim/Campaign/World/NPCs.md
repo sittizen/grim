@@ -7,7 +7,7 @@ mindmap-plugin: basic
 ## LAW
 
 ### Prostitute ( controllo tramire denaro e informazioni )
-- Sono molto potenti, ormai sono praticamente solo amanti dei benestanti  e  prestano soldi a mezza città.
+- Sono molto potenti, ormai sono praticamente solo amanti dei benestanti  e  prestano soldi a mezza città.
 - Sanne, mora bassa formosa, capelli a caschetto piuttosto voluminosi
 - Anais, alta bionda, lineamenti nobili e aria sprezzante
 - Elais, non si capisce se ragazza o giovane ragazzo, lunghi capelli lisci
@@ -56,7 +56,7 @@ mindmap-plugin: basic
 - sanno addestrare i Troll
 - Sub title
 
-### La Strega Balak (estendere la corruzione per tornare al vecchio mondo)
+### La Strega [[Balak]] (estendere la corruzione per tornare al vecchio mondo)
 
 ### Hobgoblin (forza militare degli orchi)
 - ciclo della giornata
@@ -81,6 +81,7 @@ mindmap-plugin: basic
 
 ### Le Fate ( riprendersi il bosco )
 - Regina Einhor
+- [[Freiny]] il traditore ( acquistare potere )
 
 ### L'Eremita (proteggere quello che resta)
 

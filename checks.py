@@ -85,9 +85,9 @@ class DIFFICULTY(Enum):
 class BASE_SUCCESS_RATIO(Enum):
     # we decide the expected success ratio for someone in the normal category
     EASY = 1
-    NORMAL = 0.80
+    NORMAL = 0.8
     HARD = 0.5
-    CHALLENGING = 0
+    CHALLENGING = 0.1
 
 class UP_ABILITY_WEIGHT(Enum):
     # we define the weight of expertise in the success ratio
@@ -96,16 +96,16 @@ class UP_ABILITY_WEIGHT(Enum):
     EASY = 0.3
     NORMAL = 0.2
     HARD = 0.1
-    CHALLENGING = 0.1
+    CHALLENGING = 0.15
 
 class DOWN_ABILITY_WEIGHT(Enum):
     # we define the weight of incompetence in the success ratio
     # the more challenging the task, the more harmful becomes the lack of mastery
     # (you can still play football with friends, you cant dance with no training)
-    EASY = 0.25
+    EASY = 0.2
     NORMAL = 0.3
     HARD = 0.4
-    CHALLENGING = 0.45
+    CHALLENGING = 0.5
 
 
 def expected_task_success_ratios(cat):
@@ -130,57 +130,67 @@ def expected_task_success_ratios(cat):
         tmp = Enum("tmp", {k:max(min(round(v,2),1), 0) for k,v in reversed(success_ratio.items())}.items())
         return Enum(f"{cat.name}_SUCCESS_RATIO", {k.name:k.value for k in reversed(tmp)})
    
+def get_expected_task_success_ratio(cat, diff):
+    ratios = expected_task_success_ratios(cat)
+    if diff.name in ratios.__dict__:
+        return ratios[diff.name].value
+    if "EASY" in ratios.__dict__:
+        return 0
+    return 1
 
 print(f"\nExpected success probabilities:")
 for cat in ABILITY_CAT:
-    print(f"\tbeing {cat.name} : {[(k.name, k.value) for k in expected_task_success_ratios(cat)]}")
+    print(f"\tbeing {cat.name} : {[(k.name, get_expected_task_success_ratio(cat, k)) for k in  DIFFICULTY]}")
 
 
-def get_expected_task_success_ratio(ab, diff): # sbagliato
-    ratios = expected_task_success_ratios(ab)
-    if diff.name in ratios.__dict__:
-        return ratios[diff.name].value
-    return 0.0
+class BaseDice(Enum):
+    # we define the base dice for every ability category
+    ININFLUENTE = "D6"
+    INCAPACE = "D6"
+    INADATTO = "D6"
+    NORMALE = "D6"
+    PORTATO = "D6"
+    ESPERTO = "D6"
+    ECCEZIONALE = "D6"
 
-def task_roll(base_dice, diff_dice, diff):
-    diff_roll = [0, ] * SZ
-    for _ in range(diff.value):
-        diff_roll += ROLLS[diff_dice]()
-    return ROLLS[base_dice]() + ROLLS[base_dice]() + diff_roll
+class DiffDice(Enum):
+    # we define the difficulty dice for every ability category
+    ININFLUENTE = "D4"
+    INCAPACE = "D6"
+    INADATTO = "D6"
+    NORMALE = "D6"
+    PORTATO = "D6"
+    ESPERTO = "D6"
+    ECCEZIONALE = "D6"
 
-def mean_ecdf(base_dice, diff_dice, diff, category):
-    ecdf = ECDF(task_roll(base_dice, diff_dice, diff))
-    vals = ecdf(category.value) # probabilities to roll under each val of the category
+def task_roll(cat, diff):
+    return ROLLS["D20"]()
+
+def mean_ecdf(cat, diff):
+    ecdf = ECDF(task_roll(cat, diff))
+    vals = ecdf(cat.value) # probabilities to roll under each val of the category
     _num, _den = 0,0
 
     # return a single value, the weighted mean of the probabilities to roll under each val of the category
-    probs = [VALPROB[ability_val] for ability_val in category.value]
+    probs = [VALPROB[ability_val] for ability_val in cat.value]
     for value, weight in zip(vals, probs / np.sum(probs)):  
         _num += value * weight 
         _den += weight
     return _num / _den
 
-
-
-
-fitting = {}
-
-for base_dice in ("D8", "D6"):
-    for diff_dice in ("D4", "D6",):
-        print(f"\nProbabilità stimata con base {base_dice} e difficulty {diff_dice}")
-        fitval = 0.0
-        for ab in ABILITY_CAT:
-            for diff in DIFFICULTY:
-                task = task_roll(base_dice, diff_dice, diff)
-                expected_ratio = get_expected_task_success_ratio(ab,diff)
-                estimated_ratio =  mean_ecdf(base_dice, diff_dice, diff, ab)
-                fitval += abs(expected_ratio - estimated_ratio)
-                #print(f"\t{ab.name} - {diff.name} : {estimated_ratio} (expected: {expected_ratio})")
-        fitting[f"{base_dice}:{diff_dice}"] = fitval
-
-print(fitting)
-                
-
+oks = 0
+for cat in ABILITY_CAT:
+    res = []
+    for diff in DIFFICULTY:
+        task = task_roll(cat, diff)
+        expected_ratio = get_expected_task_success_ratio(cat, diff)
+        estimated_ratio =  mean_ecdf(cat, diff)
+        fitval = round(expected_ratio - estimated_ratio, 2)
+        if fitval == 0:
+            oks += 1
+        res.append((diff.name, round(estimated_ratio,2), fitval if fitval else "Ok"))
+    print(f"\t{cat.name} - {res}")
+print(f"\n{oks} / {len(ABILITY_CAT) * len(DIFFICULTY)} tests ok")
 
 
 

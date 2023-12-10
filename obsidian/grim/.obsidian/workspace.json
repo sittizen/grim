@@ -11,9 +11,19 @@
             "id": "e2d052833599d81d",
             "type": "leaf",
             "state": {
+              "type": "mindmapview",
+              "state": {
+                "file": "Campaign/World/NPCs.md"
+              }
+            }
+          },
+          {
+            "id": "042d9afabe385157",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Campaign/World/History Timeline.md",
+                "file": "Campaign/World/_npcs/Balak.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Campaign/World/History Timeline.md",
+                "file": "Campaign/World/NPCs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Campaign/World/History Timeline.md",
+                "file": "Campaign/World/NPCs.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Campaign/World/History Timeline.md"
+                "file": "Campaign/World/NPCs.md"
               }
             }
           }
@@ -149,17 +159,21 @@
   },
   "active": "e2d052833599d81d",
   "lastOpenFiles": [
-    "Campaign/World/Locations.md",
+    "Campaign/World/_npcs/Freiny.md",
     "Campaign/World/NPCs.md",
+    "Campaign/next session.md",
+    "Campaign/World/_npcs/Balak.md",
+    "Campaign/World/_npcs",
+    "Idee.md",
+    "Campaign/World/Weather.md",
     "Campaign/World/History Timeline.md",
+    "Campaign/World/Locations.md",
     "Campaign/World/Untitled mindmap.md",
     "Campaign/Diario.md",
     "Campaign/Il Sale.md",
     "Campaign/Events.md",
-    "Campaign/next session.md",
     "Campaign/PCs.md",
     "Excalidraw/Drawing 2023-12-04 06.51.20.excalidraw.md",
-    "Idee.md",
     "Campaign/NPCs/Titania, dea elfica delle foreste.md",
     "Campaign/NPCs/NATURE.md",
     "Campaign/NPCs/core.md",
