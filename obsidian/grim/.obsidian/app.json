@@ -1,1 +1,6 @@
-{}
+{
+  "spellcheck": false,
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "_assets",
+  "defaultViewMode": "preview"
+}

@@ -6,11 +6,11 @@
     "emojiStyle": "none",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "FarChartBar",
       "FarImage",
       "FarPenToSquare",
       "FarCalendarDays",
-      "FarAddressCard",
-      "FarCompass"
+      "FarAddressCard"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -28,11 +28,18 @@
   },
   "Idee.md": "FarLightbulb",
   "Campaign/PCs.md": "FarAddressBook",
-  "Campaign/Events.md": "FarBell",
   "Campaign/next session.md": "FarPenToSquare",
-  "Campaign/World/NPCs.md": "FarAddressCard",
-  "Campaign/World/Locations.md": "FarCompass",
-  "Campaign/World/History Timeline.md": "FarCalendarDays",
-  "Campaign/Diario.md": "FarCalendarDays",
-  "Campaign/World/Weather.md": "FarImage"
+  "Campaign/Places": "FarCompass",
+  "Campaign/Factions": "FarAddressCard",
+  "Campaign/Events": "FarCalendarDays",
+  "Campaign/Events/History Timeline.md": {
+    "iconName": "FarCalendarDays",
+    "inheritanceIcon": "FarCalendarDays"
+  },
+  "Campaign/Factions/Map.md": "FarAddressCard",
+  "Campaign/Places/Il Limite.md": {
+    "iconName": "FarCompass",
+    "inheritanceIcon": "FarCompass"
+  },
+  "Campaign/Places/Zona.md": "FarCompass"
 }

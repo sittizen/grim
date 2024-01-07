@@ -170,7 +170,6 @@ def mean_ecdf(cat, diff):
     ecdf = ECDF(task_roll(cat, diff))
     vals = ecdf(cat.value) # probabilities to roll under each val of the category
     _num, _den = 0,0
-
     # return a single value, the weighted mean of the probabilities to roll under each val of the category
     probs = [VALPROB[ability_val] for ability_val in cat.value]
     for value, weight in zip(vals, probs / np.sum(probs)):  
