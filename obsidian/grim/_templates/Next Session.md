@@ -1,0 +1,8 @@
+- review the characters
+- create a strong start
+- outline potential scenes
+- define secrets and clues
+- develop fantastic locations
+- outline important npcs
+- choose relevant monsters
+- select magic items rewards

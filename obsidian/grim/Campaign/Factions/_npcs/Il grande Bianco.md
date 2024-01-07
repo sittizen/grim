@@ -1,0 +1,1 @@
+- il grande bianco depone delle larve negli latri animali. Il loro perlo diventa bianco, seguito da mutazioni varie. Lui passa la maggior parte del tempo in uno stato letargico e si risveglia se percepisce la sofferenza dei figli. Se si trova il nascondiglio mentre è letargico è battibile, tanto più quanto i figli sono stati decimati, altrimenti è tpk certo e telefonato.

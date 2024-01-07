@@ -1,0 +1,1 @@
+un golem di pietra ricoperto di muschio è perso nella foresta, ha un carattere timido e bonario ma forza 20

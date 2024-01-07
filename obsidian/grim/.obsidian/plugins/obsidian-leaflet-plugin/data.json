@@ -1,0 +1,278 @@
+{
+  "mapMarkers": [
+    {
+      "id": "Middle Earth",
+      "lastAccessed": 1704551249719,
+      "markers": [
+        {
+          "id": "ID_59595b88e84b",
+          "type": "default",
+          "loc": [
+            994,
+            461
+          ],
+          "link": "Capanna della Strega",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.4501953125,
+            -1.2942708333333333
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Campaign/World/Locations/World.md"
+      ]
+    },
+    {
+      "id": "world",
+      "lastAccessed": 1704627115224,
+      "markers": [
+        {
+          "id": "ID_791859794828",
+          "type": "default",
+          "loc": [
+            978.109375,
+            479
+          ],
+          "link": "Capanna della Strega",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_ebbad8180b88",
+          "type": "default",
+          "loc": [
+            605.109375,
+            846
+          ],
+          "link": "Il grande Bianco",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_5a992a983aba",
+          "type": "default",
+          "loc": [
+            491.109375,
+            249
+          ],
+          "link": "Il Limite",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_f86aa95b9bcb",
+          "type": "event",
+          "loc": [
+            904.03125,
+            378
+          ],
+          "link": "incontro verso casa della strega",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_29f97a4a9b0b",
+          "type": "event",
+          "loc": [
+            462.109375,
+            850
+          ],
+          "link": "scontro fra lupi normali e corrotti",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_8858ea8a79d9",
+          "type": "event",
+          "loc": [
+            923.109375,
+            735
+          ],
+          "link": "golem di pietra",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_5b4bf92aeb28",
+          "type": "default",
+          "loc": [
+            230.109375,
+            1013
+          ],
+          "link": "Caverna dei cristalli",
+          "layer": "%5B%5Bworld.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Campaign/Places/Zona.md"
+      ]
+    },
+    {
+      "id": "limite",
+      "lastAccessed": 1704627144237,
+      "markers": [
+        {
+          "id": "ID_cb387b1a79fb",
+          "type": "default",
+          "loc": [
+            290.21875,
+            556
+          ],
+          "link": "La Sirena e il Marinaio",
+          "layer": "%5B%5Bil%20limite.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_5b6ab8aa58aa",
+          "type": "default",
+          "loc": [
+            880.21875,
+            578
+          ],
+          "layer": "%5B%5Bil%20limite.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_8829ab6a2b98",
+          "type": "default",
+          "loc": [
+            580.21875,
+            604
+          ],
+          "link": "L'eroe e la Brocca",
+          "layer": "%5B%5Bil%20limite.jpg%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": [
+        "Campaign/Places/Il Limite.md"
+      ]
+    }
+  ],
+  "defaultMarker": {
+    "type": "default",
+    "iconName": "map-marker",
+    "color": "#ff0000",
+    "transform": {
+      "size": 6,
+      "x": 0,
+      "y": -2
+    }
+  },
+  "markerIcons": [
+    {
+      "type": "event",
+      "iconName": "asterisk",
+      "color": "#ff0000",
+      "alpha": 1,
+      "layer": true,
+      "transform": {
+        "size": 6,
+        "x": 0,
+        "y": -2
+      },
+      "isImage": false,
+      "tags": [],
+      "minZoom": null,
+      "maxZoom": null
+    }
+  ],
+  "color": "#dddddd",
+  "lat": 39.983334,
+  "long": -82.98333,
+  "notePreview": false,
+  "layerMarkers": true,
+  "previousVersion": "6.0.1",
+  "version": {
+    "major": 6,
+    "minor": 0,
+    "patch": 1
+  },
+  "warnedAboutMapMarker": false,
+  "copyOnClick": false,
+  "displayMarkerTooltips": "hover",
+  "displayOverlayTooltips": true,
+  "configDirectory": null,
+  "mapViewEnabled": true,
+  "mapViewParameters": {},
+  "enableDraw": true,
+  "defaultUnitType": "metric",
+  "defaultTile": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+  "defaultTileDark": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+  "defaultAttribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>",
+  "defaultTileSubdomains": "a,b,c,d"
+}

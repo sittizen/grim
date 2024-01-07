@@ -1,0 +1,4 @@
+-  sul ponte si può anche solo mangiare, è piuttosto costoso e frequentato dai più ricchi, le ragazze girano tra i tavoli.  
+-  il secondo piano si divide fra cucine appartamenti di chi ci lavora e stanze delle prostitute padrone .  
+- Sul fondo ci sono le prostitute standard con ingresso separato.  
+- Ai tavoli del ponte si può anche giocare d'azzardo.

@@ -1,0 +1,1 @@
+il mantello, doppio vantaggio ai tiri di carisma e alza il valore di 2. Ad ogni tentativo di persuazione tirso salvezza con doppio svantaggio per non provare desiderio verso l'interolcutore. Consumare il rapporto toglie 1d4 punti di saggezza. (post scambio toglie 1d4 punti di costituzione)
