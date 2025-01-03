@@ -6,10 +6,15 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 packages = [
     {include = "grim/dice",from = "components"},
+    {include = "grim/stats",from = "components"},
+    {include = "grim/character",from = "components"},
 ]
 
 [tool.poetry.dependencies]
 python = "^3.13"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
 
 [build-system]
 requires = ["poetry-core"]

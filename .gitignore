@@ -1,7 +1,12 @@
 .ash_history
 .gitconfig
+
 .cache/
 .dotnet/
 .local/
 .ssh/
 .vscode-server/
+
+__pycache__/
+*.py[cod]
+*$py.class
