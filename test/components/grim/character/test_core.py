@@ -14,3 +14,5 @@ def test_char_creation():
         "accuracy",
     ):
         assert 6 <= getattr(char, attribute).value <= 15
+
+    assert char.is_complete is False
