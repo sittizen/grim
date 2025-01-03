@@ -1,3 +1,7 @@
 .ash_history
-.cache
-.local
+.gitconfig
+.cache/
+.dotnet/
+.local/
+.ssh/
+.vscode-server/
