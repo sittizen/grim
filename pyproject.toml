@@ -2,7 +2,7 @@
 name = "workspace"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Simone Cittadini <simone.cittadini@protonmail.com>"]
 readme = "README.md"
 packages = [
     {include = "grim/dice",from = "components"},
@@ -10,11 +10,15 @@ packages = [
     {include = "grim/character",from = "components"},
 ]
 
+
+
 [tool.poetry.dependencies]
 python = "^3.13"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.10.0"
+isort = "^5.13.2"
+flake8 = "^7.1.1"
 
 [build-system]
 requires = ["poetry-core"]

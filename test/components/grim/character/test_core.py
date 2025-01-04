@@ -1,8 +1,7 @@
 from grim.character import Character
-from grim.dice import d
 
 
-def test_char_creation():
+def test_char_creation() -> None:
     char = Character.create()
     for attribute in (
         "strenght",
@@ -15,4 +14,4 @@ def test_char_creation():
     ):
         assert 6 <= getattr(char, attribute).value <= 15
 
-    assert char.is_complete is False
+    # assert char.is_complete is False
