@@ -1,3 +1,3 @@
-from grim.stats.core import Attribute, Save, Stat, Tweak
+from grim.stats.core import AttributeVal, SaveVal, StatVal, Tweak
 
-__all__ = ["Attribute", "Tweak", "Save", "Stat"]
+__all__ = ["AttributeVal", "Tweak", "SaveVal", "StatVal"]
