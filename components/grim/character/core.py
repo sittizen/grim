@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from random import shuffle
 from typing import cast
 
@@ -8,9 +9,15 @@ from .classes import Class
 from .stats import Attribute, Save
 
 
+@dataclass
+class SaveTuple:
+    attr: Attribute
+    val: int
+
+
 class Character:
     attributes: dict[Attribute, int] = {}
-    saves: dict[Save, tuple[Attribute, int]] = {}
+    saves: dict[Save, SaveTuple] = {}
     class_: type[Class] | None = None
     main_attribute: Attribute | None = None
 
@@ -19,9 +26,16 @@ class Character:
             if isinstance(val, AttributeVal):
                 self.attributes[cast(Attribute, val.name)] = val.value
             if isinstance(val, SaveVal):
-                self.saves[cast(Save, val.name)] = (cast(Attribute, val.on_attribute), val.value)
+                self.saves[cast(Save, val.name)] = SaveTuple(attr=cast(Attribute, val.on_attribute), val=val.value)
             if isinstance(val, Class):
                 self.main_class = val
+
+    def _apply_class(self, class_: type[Class]) -> None:
+        for vals in class_.tweaks.values():
+            for val in vals:
+                if len(val) == 1:
+                    if val[0].cat == Save:
+                        self.saves[cast(Save, val[0].stat)].val += val[0].val
 
     @property
     def is_complete(self) -> None:
@@ -57,6 +71,8 @@ class Character:
             attrs.remove(class_.main_attr[0])
             out.attributes[class_.main_attr[0]] = vals[0]
             vals.pop(0)
+
+            out._apply_class(class_)
 
         for count, attr in enumerate(attrs):
             out.attributes[attr] = vals[count]
