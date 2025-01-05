@@ -43,3 +43,27 @@ class Tweak:
     @property
     def uid(self) -> str:
         return md5(f"{str(self.cat)}{self.stat}{self.val}".encode()).hexdigest()
+
+
+class TweakChoice:
+    """For every list in the tuple, only one tweak can be chosen."""
+
+    name: str
+    choices: dict[str, dict[str, Tweak]] = {}
+
+    def __init__(self, name: str, choices: dict[str, tuple[list[Tweak], ...]]):
+        self.name = name
+        for k, v in choices.items():
+            self.choices[k] = {}
+            for tweaks in v:
+                for tweak in tweaks:
+                    self.choices[k][tweak.uid] = tweak
+
+    def choose(self, desc: str, uid: str) -> Tweak:
+        choices = self.choices[desc]
+        if uid in choices:
+            return choices.pop(uid)
+        raise ValueError(f"No such choice in {desc}")
+
+    def done(self) -> bool:
+        return all([len(x) == 0 for x in self.choices])
