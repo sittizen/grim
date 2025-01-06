@@ -30,6 +30,15 @@ class Character:
             if isinstance(val, Class):
                 self.main_class = val
 
+    def __repr__(self) -> str:
+        out = {
+            "class": self.class_,
+            "main_attribute": self.main_attribute,
+            "attributes": self.attributes,
+            "saves": self.saves,
+        }
+        return str(out)
+
     def _apply_class(self, class_: type[Class], attrs: list[Attribute], vals: list[int]) -> None:
         self.class_ = class_
         shuffle(class_.main_attr)

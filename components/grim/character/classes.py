@@ -18,6 +18,14 @@ class Fighter(Class):
     tweaks = [TweakChoice("pa", (Tweak(Save.PA, 1),)), TweakChoice("mfx", (Tweak(Save.MFX, -1),))]
 
 
+class Cleric(Class):
+    name = "cleric"
+    main_attr = [Attribute.PER, Attribute.CHA]
+    tweaks = [
+        TweakChoice("mfx", (Tweak(Save.MFX, 1),)),
+    ]
+
+
 class Ranger(Fighter):
     name = "ranger"
     main_attr = [Attribute.DEX]

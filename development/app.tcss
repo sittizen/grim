@@ -1,0 +1,23 @@
+Screen {
+    layout: grid;
+    grid-size: 9 12;
+}
+
+#char_choices {
+    column-span: 3;
+    row-span: 12;
+}
+
+#attrs_sheet {
+    column-span: 2;
+    row-span: 12;
+}
+
+#saves_sheet {
+    column-span: 4;
+    row-span: 12;
+}
+
+.head_label {
+    max-height: 1;
+}
