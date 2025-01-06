@@ -15,7 +15,7 @@ class Fighter(Class):
         Attribute.STR,
         Attribute.DEX,
     ]
-    tweaks = {"saves": ([Tweak(cat=Save, stat=Save.PA, val=1)], [Tweak(cat=Save, stat=Save.MFX, val=-1)])}
+    tweaks = {"saves": ([Tweak(stat=Save.PA, val=1)], [Tweak(stat=Save.MFX, val=-1)])}
 
 
 class Ranger(Fighter):

@@ -35,8 +35,8 @@ class Tweak:
     stat: Enum
     val: int
 
-    def __init__(self, cat: type[Enum], stat: Enum, val: int):
-        self.cat = cat
+    def __init__(self, stat: Enum, val: int):
+        self.cat = type(stat)
         self.stat = stat
         self.val = val
 
@@ -49,21 +49,20 @@ class TweakChoice:
     """For every list in the tuple, only one tweak can be chosen."""
 
     name: str
-    choices: dict[str, dict[str, Tweak]] = {}
+    choices: dict[str, Tweak] = {}
+    _chosen: bool = False
 
-    def __init__(self, name: str, choices: dict[str, tuple[list[Tweak], ...]]):
+    def __init__(self, name: str, choices: tuple[Tweak, ...]):
         self.name = name
-        for k, v in choices.items():
-            self.choices[k] = {}
-            for tweaks in v:
-                for tweak in tweaks:
-                    self.choices[k][tweak.uid] = tweak
+        for tweak in choices:
+            self.choices[tweak.uid] = tweak
 
-    def choose(self, desc: str, uid: str) -> Tweak:
-        choices = self.choices[desc]
-        if uid in choices:
-            return choices.pop(uid)
-        raise ValueError(f"No such choice in {desc}")
-
+    @property
     def done(self) -> bool:
-        return all([len(x) == 0 for x in self.choices])
+        return self._chosen
+
+    def choose(self, uid: str) -> Tweak:
+        if uid in self.choices:
+            self._chosen = True
+            return self.choices[uid]
+        raise ValueError(f"No such choice in {self.name}")
