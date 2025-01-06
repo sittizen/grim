@@ -30,12 +30,18 @@ class Character:
             if isinstance(val, Class):
                 self.main_class = val
 
-    def _apply_class(self, class_: type[Class]) -> None:
-        for vals in class_.tweaks.values():
-            for val in vals:
-                if len(val) == 1:
-                    if val[0].cat == Save:
-                        self.saves[cast(Save, val[0].stat)].val += val[0].val
+    def _apply_class(self, class_: type[Class], attrs: list[Attribute], vals: list[int]) -> None:
+        self.class_ = class_
+        shuffle(class_.main_attr)
+        self.main_attribute = class_.main_attr[0]
+        attrs.remove(class_.main_attr[0])
+        self.attributes[class_.main_attr[0]] = vals[0]
+        vals.pop(0)
+        for tweak in class_.tweaks:
+            choice = tweak.choose()
+            if choice is not None:
+                if choice.cat == Save:
+                    self.saves[cast(Save, choice.stat)].val += choice.val
 
     @property
     def is_complete(self) -> None:
@@ -52,7 +58,6 @@ class Character:
         )
 
         vals = sorted([d((6, 6, 6), capl=2, caph=5) for _ in range(7)], reverse=True)
-
         attrs = [
             Attribute.STR,
             Attribute.DEX,
@@ -65,14 +70,7 @@ class Character:
         shuffle(attrs)
 
         if class_ is not None:
-            out.class_ = class_
-            shuffle(class_.main_attr)
-            out.main_attribute = class_.main_attr[0]
-            attrs.remove(class_.main_attr[0])
-            out.attributes[class_.main_attr[0]] = vals[0]
-            vals.pop(0)
-
-            out._apply_class(class_)
+            out._apply_class(class_, attrs, vals)
 
         for count, attr in enumerate(attrs):
             out.attributes[attr] = vals[count]

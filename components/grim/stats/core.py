@@ -31,14 +31,13 @@ class SaveVal(StatVal):
 class Tweak:
     """A tweak can be applied to rolled value of Stats when building a character."""
 
-    cat: type[Enum]
-    stat: Enum
-    val: int
-
     def __init__(self, stat: Enum, val: int):
-        self.cat = type(stat)
-        self.stat = stat
-        self.val = val
+        self.cat: type[Enum] = type(stat)
+        self.stat: Enum = stat
+        self.val: int = val
+
+    def __repr__(self) -> str:
+        return f"{self.stat}: {self.val}"
 
     @property
     def uid(self) -> str:
@@ -48,20 +47,26 @@ class Tweak:
 class TweakChoice:
     """For every list in the tuple, only one tweak can be chosen."""
 
-    name: str
-    choices: dict[str, Tweak] = {}
-    _chosen: bool = False
-
     def __init__(self, name: str, choices: tuple[Tweak, ...]):
-        self.name = name
+        self.choices: dict[str, Tweak] = {}
+        self._chosen: bool = False
+        self.name: str = name
         for tweak in choices:
             self.choices[tweak.uid] = tweak
+
+    def __repr__(self) -> str:
+        return f"{self.name}: {len(self.choices)} choices"
 
     @property
     def done(self) -> bool:
         return self._chosen
 
-    def choose(self, uid: str) -> Tweak:
+    def choose(self, uid: str | None = None) -> Tweak | None:
+        if uid is None:
+            if len(self.choices) == 1:
+                self._chosen = True
+                return list(self.choices.values())[0]
+            return None
         if uid in self.choices:
             self._chosen = True
             return self.choices[uid]

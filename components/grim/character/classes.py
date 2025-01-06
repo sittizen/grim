@@ -1,4 +1,4 @@
-from grim.stats import Tweak
+from grim.stats import Tweak, TweakChoice
 
 from .stats import Attribute, Save
 
@@ -6,7 +6,7 @@ from .stats import Attribute, Save
 class Class:
     name: str
     main_attr: list[Attribute]
-    tweaks: dict[str, tuple[list[Tweak], ...]]
+    tweaks: list[TweakChoice]
 
 
 class Fighter(Class):
@@ -15,7 +15,7 @@ class Fighter(Class):
         Attribute.STR,
         Attribute.DEX,
     ]
-    tweaks = {"saves": ([Tweak(stat=Save.PA, val=1)], [Tweak(stat=Save.MFX, val=-1)])}
+    tweaks = [TweakChoice("pa", (Tweak(Save.PA, 1),)), TweakChoice("mfx", (Tweak(Save.MFX, -1),))]
 
 
 class Ranger(Fighter):

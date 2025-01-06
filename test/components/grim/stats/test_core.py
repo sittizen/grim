@@ -27,6 +27,25 @@ def test_choice() -> None:
     choice = TweakChoice("str_or_dex", choices=(str1, dex1))
 
     assert choice.choices == {str1.uid: str1, dex1.uid: dex1}
-    assert choice.done == False
+    assert choice.done is False
     assert choice.choose(str1.uid) == str1
-    assert choice.done == True
+    assert choice.done is True
+
+
+def test_single_choice() -> None:
+    str1 = Tweak(Attribute.STR, 1)
+    choice = TweakChoice("str+1", choices=(str1,))
+
+    assert choice.done is False
+    assert choice.choose() == str1
+    assert choice.done is True
+
+
+def test_no_single_choice() -> None:
+    str1 = Tweak(Attribute.STR, 1)
+    dex1 = Tweak(Attribute.DEX, 1)
+    choice = TweakChoice("str_or_dex", choices=(str1, dex1))
+
+    assert choice.done is False
+    assert choice.choose() is None
+    assert choice.done is False
