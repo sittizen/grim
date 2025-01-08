@@ -1,3 +1,8 @@
+"""Totally other stuff.
+
+This mle allows the user to make mathematical calculations.
+"""
+
 from random import randrange
 
 
@@ -8,6 +13,7 @@ def d(
     capl: int = 1,
     caph: int | None = None,
 ) -> int:
+    """Funzione che fa cose."""
     if isinstance(faces, int):
         caph = caph or faces
         take = max if adv - dis >= 0 else min

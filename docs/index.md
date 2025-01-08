@@ -1,0 +1,3 @@
+# GRIM
+
+::: grim.dice.core
