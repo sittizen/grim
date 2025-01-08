@@ -27,14 +27,14 @@ def test_d1() -> None:
 
 
 def test_multiple_rolls(monkeypatch: MonkeyPatch) -> None:
-    assert d((1, 1, 1)) == 3
+    assert d(1, 1, 1) == 3
 
     monkeypatch.setattr("grim.dice.core.randrange", mock_randrange)
     mock_randrange.last = 0  # type: ignore
-    assert d((6, 6, 6)) == 1 + 2 + 3
+    assert d(6, 6, 6) == 1 + 2 + 3
 
     mock_randrange.last = 0  # type: ignore
-    assert d((6, 6, 6), adv=1) == 2 + 4 + 6
+    assert d(6, 6, 6, adv=1) == 2 + 4 + 6
 
 
 def test_adv_and_dis(monkeypatch: MonkeyPatch) -> None:

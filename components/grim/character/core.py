@@ -66,7 +66,7 @@ class Character:
             mfx=SaveVal(Save.MFX, 0, Attribute.PER),
         )
 
-        vals = sorted([d((6, 6, 6), capl=2, caph=5) for _ in range(7)], reverse=True)
+        vals = sorted([d(6, 6, 6, capl=2, caph=5) for _ in range(7)], reverse=True)
         attrs = [
             Attribute.STR,
             Attribute.DEX,
