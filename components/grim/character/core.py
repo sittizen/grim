@@ -1,32 +1,20 @@
-from dataclasses import dataclass
 from random import shuffle
 from typing import cast
 
 from grim.dice import d
-from grim.stats import AttributeVal, SaveVal
+from grim.stats import Stats
 
 from .classes import Class
 from .stats import Attribute, Save
 
 
-@dataclass
-class SaveTuple:
-    attr: Attribute
-    val: int
-
-
 class Character:
-    attributes: dict[Attribute, int] = {}
-    saves: dict[Save, SaveTuple] = {}
-    class_: type[Class] | None = None
-    main_attribute: Attribute | None = None
-
-    def __init__(self, **kwargs: AttributeVal | SaveVal | type[Class]):
+    def __init__(self, **kwargs: Attribute | Save | type[Class]):
         for val in kwargs.values():
-            if isinstance(val, AttributeVal):
-                self.attributes[cast(Attribute, val.name)] = val.value
-            if isinstance(val, SaveVal):
-                self.saves[cast(Save, val.name)] = SaveTuple(attr=cast(Attribute, val.on_attribute), val=val.value)
+            if isinstance(val, Attribute):
+                self.attributes = Stats(Attribute)
+            if isinstance(val, Save):
+                self.saves = Stats(Save)
             if isinstance(val, Class):
                 self.main_class = val
 

@@ -1,51 +1,53 @@
 from enum import StrEnum
 
-from grim.stats import Tweak, TweakChoice
+from grim.stats import Stats
 
 
-class Attribute(StrEnum):
+class Attributes(StrEnum):
     STR = "Strength"
-    DEX = "Dexterity"
+    INT = "Intelligence"
 
 
-class Save(StrEnum):
+class Saves(StrEnum):
+    PA = "Paralysis"
     PO = "Poison"
 
 
-def test_tweaks() -> None:
-    str1 = Tweak(stat=Attribute.STR, val=1)
-    strm1 = Tweak(stat=Attribute.STR, val=-1)
-    s1 = Tweak(stat=Save.PO, val=1)
+def test_stat_group() -> None:
+    attributes = Stats(Attributes)
+    assert attributes.STR == 0
+    assert attributes.INT == 0
 
-    assert str1.uid != strm1.uid != s1.uid
-    assert str1.cat == Attribute
+    attributes.STR = 10
+    assert attributes.STR == 10
 
-
-def test_choice() -> None:
-    str1 = Tweak(Attribute.STR, 1)
-    dex1 = Tweak(Attribute.DEX, 1)
-    choice = TweakChoice("str_or_dex", choices=(str1, dex1))
-
-    assert choice.choices == {str1.uid: str1, dex1.uid: dex1}
-    assert choice.done is False
-    assert choice.choose(str1.uid) == str1
-    assert choice.done is True
+    saves = Stats(Saves)
+    saves.PA = 1
+    assert saves.PA == 1
 
 
-def test_single_choice() -> None:
-    str1 = Tweak(Attribute.STR, 1)
-    choice = TweakChoice("str+1", choices=(str1,))
+def test_tweak() -> None:
+    attributes = Stats(Attributes)
+    attributes.STR = 10
+    attributes.INT = 10
 
-    assert choice.done is False
-    assert choice.choose() == str1
-    assert choice.done is True
+    attributes.tweak("fighter", Attributes.STR, 1)
+    attributes.tweak("mage", Attributes.INT, 1)
 
+    attributes.apply("fighter")
+    assert attributes.STR == 11
+    assert attributes.INT == 10
 
-def test_no_single_choice() -> None:
-    str1 = Tweak(Attribute.STR, 1)
-    dex1 = Tweak(Attribute.DEX, 1)
-    choice = TweakChoice("str_or_dex", choices=(str1, dex1))
+    attributes.remove("fighter")
+    attributes.apply("mage")
+    assert attributes.STR == 10
+    assert attributes.INT == 11
 
-    assert choice.done is False
-    assert choice.choose() is None
-    assert choice.done is False
+    attributes.apply("fighter")
+    assert attributes.STR == 11
+    assert attributes.INT == 11
+
+    assert attributes.layers == {"fighter", "mage"}
+    attributes.remove("mage")
+    attributes.remove("fighter")
+    assert attributes.layers == set()

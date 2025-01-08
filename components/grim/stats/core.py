@@ -1,73 +1,53 @@
 from enum import Enum
 from hashlib import md5
-
-
-class StatVal:
-    """A stat is choosen among the names of a particular StrEnum and has a value."""
-
-    name: Enum
-    value: int
-
-
-class AttributeVal(StatVal):
-    """An attribute represents an absolute measure of some trait."""
-
-    def __init__(self, name: Enum, value: int):
-        self.name = name
-        self.value = value
-
-
-class SaveVal(StatVal):
-    """A save represents the ability to respond to some specific threat, modifying the check against an attribute."""
-
-    on_attribute: Enum
-
-    def __init__(self, name: Enum, value: int, on_attribute: Enum):
-        self.name = name
-        self.value = value
-        self.on_attribute = on_attribute
+from typing import Any
 
 
 class Tweak:
     """A tweak can be applied to rolled value of Stats when building a character."""
 
-    def __init__(self, stat: Enum, val: int):
+    def __init__(self, stat: Enum, tweak: int):
         self.cat: type[Enum] = type(stat)
         self.stat: Enum = stat
-        self.val: int = val
+        self.tweak: int = tweak
 
-    def __repr__(self) -> str:
-        return f"{self.stat}: {self.val}"
+
+class Stats:
+    """Defines a logical group of stats, each with an integer value."""
+
+    def __init__(self, enum: type[Enum]):
+        self._enum = enum
+        self._layers: set[str] = set()
+        self._tweaks = {}
+        for member in self._enum:
+            setattr(self, member.name, 0)
+
+    def __getattribute__(self, name: str) -> Any:
+        if name in ("_enum", "_layers", "_tweaks", "tweak", "apply", "remove", "layers"):
+            return super().__getattribute__(name)
+        if name in self._enum.__members__:
+            out = super().__getattribute__(name)
+            for layer in self._layers:
+                if layer in self._tweaks and name in self._tweaks[layer]:
+                    out += self._tweaks[layer][name]
+            return out
 
     @property
-    def uid(self) -> str:
-        return md5(f"{str(self.cat)}{self.stat}{self.val}".encode()).hexdigest()
+    def layers(self) -> set[str]:
+        return self._layers
 
+    def tweak(self, name: str, stat: Enum, val: int) -> None:
+        if name not in self._tweaks:
+            self._tweaks[name] = {stat.name: val}
+        elif stat.name in self._tweaks[name]:
+            raise ValueError(f"Tweak {name} already exists for {stat}")
 
-class TweakChoice:
-    """For every list in the tuple, only one tweak can be chosen."""
+    def apply(self, layer: str) -> None:
+        if layer in self._layers:
+            raise ValueError(f"Layer {layer} already applied")
+        self._layers.add(layer)
 
-    def __init__(self, name: str, choices: tuple[Tweak, ...]):
-        self.choices: dict[str, Tweak] = {}
-        self._chosen: bool = False
-        self.name: str = name
-        for tweak in choices:
-            self.choices[tweak.uid] = tweak
-
-    def __repr__(self) -> str:
-        return f"{self.name}: {len(self.choices)} choices"
-
-    @property
-    def done(self) -> bool:
-        return self._chosen
-
-    def choose(self, uid: str | None = None) -> Tweak | None:
-        if uid is None:
-            if len(self.choices) == 1:
-                self._chosen = True
-                return list(self.choices.values())[0]
-            return None
-        if uid in self.choices:
-            self._chosen = True
-            return self.choices[uid]
-        raise ValueError(f"No such choice in {self.name}")
+    def remove(self, layer: str) -> None:
+        if layer not in self._layers:
+            raise ValueError(f"Layer {layer} not applied")
+        self._layers.remove(layer)
