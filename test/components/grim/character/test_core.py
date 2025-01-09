@@ -1,27 +1,38 @@
 # import pytest
-# from grim.character import Character
-# from grim.character.classes import Fighter
-# from grim.character.stats import Attribute, Save
+from grim.character import Character
+
+from grim.character.races import Human
+from grim.character.stats import Attributes, Saves
 
 
-# def test_bare_char_creation() -> None:
-#    char = Character.roll()
-#    for attribute in (
-#        Attribute.STR,
-#        Attribute.DEX,
-#        Attribute.CON,
-#        Attribute.KNO,
-#        Attribute.PER,
-#        Attribute.CHA,
-#        Attribute.ACC,
-#    ):
-#        assert 6 <= char.attributes[attribute] <= 15
+def test_d6_down_the_line() -> None:
+    char = Character.roll()
+    for attribute in Attributes:
+        assert 6 <= getattr(char.attributes, attribute.name) <= 15
 
-#    for save in (Save.PA, Save.PO, Save.AOE, Save.MFX):
-#        assert char.saves[save].val == 0
+    for save in Saves:
+        assert getattr(char.saves, save.name) == 0
+
+    assert char.race is None
+
 
 #    with pytest.raises(ValueError, match="Missing class"):
 #        char.is_complete
+
+
+def test_attributes_swap() -> None:
+    char = Character.roll()
+    old_str = char.attributes.STR
+    old_kno = char.attributes.KNO
+    char.swap(Attributes.STR, Attributes.KNO)
+    assert char.attributes.STR == old_kno
+    assert char.attributes.KNO == old_str
+
+
+def test_race_choice() -> None:
+    char = Character.roll()
+    char.apply_race(Human)
+    assert isinstance(char.race, Human)
 
 
 # def test_main_class_char_creation() -> None:

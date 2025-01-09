@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Attribute(Enum):
+class Attributes(Enum):
     STR = "Strength"
     DEX = "Dexterity"
     CON = "Constitution"
@@ -11,7 +11,7 @@ class Attribute(Enum):
     ACC = "Accuracy"
 
 
-class Save(Enum):
+class Saves(Enum):
     PA = "Paralysis"
     AOE = "Area of Effect"
     PO = "Poison"

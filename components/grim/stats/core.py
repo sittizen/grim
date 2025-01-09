@@ -1,5 +1,6 @@
 from enum import Enum
 from typing import Any
+from collections.abc import Iterable
 
 
 class Tweak:
@@ -22,7 +23,15 @@ class Stats:
             setattr(self, member.name, 0)
 
     def __getattribute__(self, name: str) -> Any:
-        if name in ("_enum", "_layers", "_tweaks", "tweak", "apply", "remove", "layers"):
+        if name in (
+            "_enum",
+            "_layers",
+            "_tweaks",
+            "tweak",
+            "apply",
+            "remove",
+            "layers",
+        ):
             return super().__getattribute__(name)
         if name in self._enum.__members__:
             out = super().__getattribute__(name)
@@ -30,6 +39,9 @@ class Stats:
                 if layer in self._tweaks and name in self._tweaks[layer]:
                     out += self._tweaks[layer][name]
             return out
+
+    def __iter__(self) -> Iterable[Enum]:
+        return iter(self._enum)
 
     @property
     def layers(self) -> set[str]:
