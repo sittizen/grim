@@ -1,5 +1,4 @@
 from enum import Enum
-from hashlib import md5
 from typing import Any
 
 
@@ -18,7 +17,7 @@ class Stats:
     def __init__(self, enum: type[Enum]):
         self._enum = enum
         self._layers: set[str] = set()
-        self._tweaks = {}
+        self._tweaks: dict[str, dict[str, int]] = {}
         for member in self._enum:
             setattr(self, member.name, 0)
 

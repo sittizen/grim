@@ -18,18 +18,18 @@ def test_stat_group() -> None:
     assert attributes.STR == 0
     assert attributes.INT == 0
 
-    attributes.STR = 10
+    attributes.STR = 10  # type: ignore
     assert attributes.STR == 10
 
     saves = Stats(Saves)
-    saves.PA = 1
+    saves.PA = 1  # type: ignore
     assert saves.PA == 1
 
 
 def test_tweak() -> None:
     attributes = Stats(Attributes)
-    attributes.STR = 10
-    attributes.INT = 10
+    attributes.STR = 10  # type: ignore
+    attributes.INT = 10  # type: ignore
 
     attributes.tweak("fighter", Attributes.STR, 1)
     attributes.tweak("mage", Attributes.INT, 1)

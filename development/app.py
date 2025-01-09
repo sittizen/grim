@@ -60,7 +60,7 @@ class App(BaseApp):  # type: ignore
 
     async def action_create_char(self) -> None:
         global char
-        char = Character.roll()
+        char = Character.roll()  # type: ignore
         cc = CharacterChoices(id="char_choices")
         atts = AttributesSheet(id="attrs_sheet")
         savs = SavesSheet(id="saves_sheet")
@@ -72,10 +72,10 @@ class App(BaseApp):  # type: ignore
 
     @on(Select.Changed)  # type: ignore
     async def select_changed(self, event: Select.Changed) -> None:
-        char = Character.roll(class_=event.value)
+        char = Character.roll(class_=event.value)  # type: ignore
         for a in Attribute:
             w = self.query_one(f"#attr_{a.name.lower()}")
-            w.is_main = a.name == char.main_attribute.name  # type: ignore
+            w.is_main = a.name == char.main_attribute.name
             w.av = char.attributes[a]
         for s in Save:
             w = self.query_one(f"#save_{s.name.lower()}")
