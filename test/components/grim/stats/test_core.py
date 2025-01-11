@@ -1,6 +1,10 @@
-from enum import StrEnum
+from enum import (
+    StrEnum,
+)
 
-from grim.stats import Stats
+from grim.stats import (
+    Stats,
+)
 
 
 class Attributes(StrEnum):
@@ -31,8 +35,16 @@ def test_tweak() -> None:
     attributes.STR = 10  # type: ignore
     attributes.INT = 10  # type: ignore
 
-    attributes.tweak("fighter", Attributes.STR, 1)
-    attributes.tweak("mage", Attributes.INT, 1)
+    attributes.tweak(
+        "fighter",
+        Attributes.STR,
+        1,
+    )
+    attributes.tweak(
+        "mage",
+        Attributes.INT,
+        1,
+    )
 
     attributes.apply("fighter")
     assert attributes.STR == 11
@@ -47,7 +59,10 @@ def test_tweak() -> None:
     assert attributes.STR == 11
     assert attributes.INT == 11
 
-    assert attributes.layers == {"fighter", "mage"}
+    assert attributes.layers == {
+        "fighter",
+        "mage",
+    }
     attributes.remove("mage")
     attributes.remove("fighter")
     assert attributes.layers == set()

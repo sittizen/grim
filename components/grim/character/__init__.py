@@ -1,4 +1,6 @@
-from grim.character.core import Character
+from grim.character.core import (
+    Character,
+)
 
 __all__ = [
     "Character",

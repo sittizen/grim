@@ -15,13 +15,20 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.13"
 textual = "^1.0.0"
+black = "^24.10.0"
 
 [tool.poetry.group.dev.dependencies]
 textual-dev = "^1.7.0"
 ruff = "^0.8.6"
 
 [tool.ruff]
+unsafe-fixes = true
 line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 120
+max-doc-length = 120
 
 [build-system]
 requires = ["poetry-core"]
