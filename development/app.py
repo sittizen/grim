@@ -1,9 +1,9 @@
 from grim.character import (
     Character,
-    classes,
 )
 
 # from grim.character.stats import Attribute, Save
+from grim.character.layers import classes
 from textual import (
     events,
     on,
