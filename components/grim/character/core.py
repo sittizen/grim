@@ -3,6 +3,7 @@ from enum import Enum
 from grim.dice import d
 from grim.stats import Stats
 
+from .layers import Layer
 from .layers.classes import Class
 from .layers.races import Race
 from .stats import Attributes, Saves
@@ -38,22 +39,35 @@ class Character:
         setattr(self.attributes, b.name, getattr(self.attributes, a.name))
         setattr(self.attributes, a.name, b_)
 
-    def lay_race(self, race: type[Race]) -> None:
-        self.race = race()
+    def lay(self, layer: type[Layer]) -> None:
+        obj = layer()
+        if issubclass(layer, Class):
+            if self.class_ is not None:
+                raise ValueError(f"{layer} already chosen")
+            self.class_ = obj  # type: ignore
+        elif issubclass(layer, Race):
+            if self.race is not None:
+                raise ValueError(f"{layer} already chosen")
+            self.race = obj  # type: ignore
+        else:
+            raise ValueError("Invalid Layer type")
 
-    def lay_class(self, class_: type[Class]) -> None:
-        if self.class_ is not None:
-            raise ValueError("Class already chosen")
-        self.class_ = class_()
-        for choice in self.class_.layer.values():
+        for choice in obj.layer.values():
             stat, val = list(choice.items())[0]
             if isinstance(stat, Attributes):
-                self.attributes.tweak(class_.name, stat, val)
+                self.attributes.tweak(layer.name, stat, val)
             if isinstance(stat, Saves):
-                self.saves.tweak(class_.name, stat, val)
+                self.saves.tweak(layer.name, stat, val)
 
-        self.attributes.apply(class_.name)
-        self.saves.apply(class_.name)
+        self.attributes.apply(layer.name)
+        self.saves.apply(layer.name)
+
+    def race_choose(self, tweak: str, choice: Enum) -> None:
+        if self.race is None:
+            raise ValueError("No class to choose for")
+        self.race.choose(tweak, choice)
+        if isinstance(choice, Attributes):
+            self.attributes.tweak(self.race.name, choice, self.race.layer[tweak][choice])
 
     def class_choose(self, tweak: str, choice: Enum) -> None:
         if self.class_ is None:
