@@ -1,7 +1,7 @@
 import pytest
 from grim.character import Character
-from grim.character.layers.classes import Cleric, Fighter
-from grim.character.layers.races import Elf
+from grim.character.layers.classes import Class, Cleric, Fighter
+from grim.character.layers.races import Elf, Race
 from grim.character.stats import Attributes, Saves
 
 
@@ -62,7 +62,7 @@ def test_class_choice() -> None:
         "class": False,  # still missing choices
     }
 
-    char.class_choose("main_attribute", Attributes.DEX)
+    char.choose(Class, "main_attribute", Attributes.DEX)
     assert char.check_complete()["class"] is True
 
     assert char.saves.PA == 1
@@ -86,10 +86,14 @@ def test_class_and_race_sum_layers() -> None:
     base_dex = int(char.attributes.DEX)
 
     char.lay(Fighter)
-    char.class_choose("main_attribute", Attributes.DEX)
+    char.choose(Class, "main_attribute", Attributes.DEX)
+
     assert char.attributes.DEX == base_dex + 1
 
     char.lay(Elf)
-    char.race_choose("main_attribute", Attributes.DEX)
+    char.choose(Race, "main_attribute", Attributes.DEX)
 
     assert char.attributes.DEX == base_dex + 2
+
+    char.remove(Elf)
+    assert char.attributes.DEX == base_dex + 1

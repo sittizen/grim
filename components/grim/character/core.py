@@ -62,19 +62,39 @@ class Character:
         self.attributes.apply(layer.name)
         self.saves.apply(layer.name)
 
-    def race_choose(self, tweak: str, choice: Enum) -> None:
-        if self.race is None:
-            raise ValueError("No class to choose for")
-        self.race.choose(tweak, choice)
-        if isinstance(choice, Attributes):
-            self.attributes.tweak(self.race.name, choice, self.race.layer[tweak][choice])
+    def choose(self, layer: type[Layer], tweak: str, choice: Enum) -> None:
+        obj: Layer
+        if issubclass(layer, Class):
+            if self.class_ is None:
+                raise ValueError(f"No {layer} to choose for")
+            obj = self.class_
+        elif issubclass(layer, Race):
+            if self.race is None:
+                raise ValueError(f"No {layer} to choose for")
+            obj = self.race
+        else:
+            raise ValueError("Invalid Layer type")
 
-    def class_choose(self, tweak: str, choice: Enum) -> None:
-        if self.class_ is None:
-            raise ValueError("No class to choose for")
-        self.class_.choose(tweak, choice)
+        obj.choose(tweak, choice)
         if isinstance(choice, Attributes):
-            self.attributes.tweak(self.class_.name, choice, self.class_.layer[tweak][choice])
+            self.attributes.tweak(obj.name, choice, obj.layer[tweak][choice])
+
+    def remove(self, layer: type[Layer]) -> None:
+        obj: Layer | None
+        if issubclass(layer, Class):
+            if self.class_ is None:
+                raise ValueError(f"No {layer} to remove")
+            obj = self.class_
+        elif issubclass(layer, Race):
+            if self.race is None:
+                raise ValueError(f"No {layer} to remove")
+            obj = self.race
+        else:
+            raise ValueError("Invalid Layer type")
+
+        self.attributes.remove(obj.name)
+        self.saves.remove(obj.name)
+        obj = None
 
     def remove_class(self) -> None:
         if self.class_ is None:
