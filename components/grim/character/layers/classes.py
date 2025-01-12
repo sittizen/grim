@@ -1,18 +1,18 @@
 from enum import Enum
 
 from ..stats import Attributes, Saves
+from . import Layer
 
 TweaksChoice = list[tuple[Enum, int]]
 
 
-class Class:
-    name: str
-    tweaks: dict[str, TweaksChoice]
+class Class(Layer):
+    pass
 
 
 class Fighter(Class):
     name: str = "fighter"
-    tweaks: dict[str, TweaksChoice] = {
+    tweaks_choices: dict[str, TweaksChoice] = {
         "main_attribute": [(Attributes.STR, 1), (Attributes.DEX, 1)],
         "save_pa": [(Saves.PA, 1)],
         "save_mfx": [(Saves.MFX, -1)],

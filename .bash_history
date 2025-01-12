@@ -25,3 +25,11 @@ poetry run ruff --config pyproject.toml format components/
 poetry run ruff --config pyproject.toml format components/
 poetry run ruff --config pyproject.toml format components/
 exit
+exit
+exit
+whoami
+exit
+bash doit.sh 
+exit
+bash doit.sh 
+exit
