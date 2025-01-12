@@ -33,3 +33,94 @@ bash doit.sh
 exit
 bash doit.sh 
 exit
+tl test/components/grim/character/test_core.py 
+tl test/components/grim/character/test_core.py 
+poetry add --group dev pytest-xdiff
+poetry add --group dev pytest-xdist
+tl test/components/grim/character/test_core.py 
+cat /etc/bash.bashrc 
+poetry run pytest -ff -sxvvv --color=yes -W ignore::DeprecationWarning
+poetry run pytest -ff -sxvvv --color=yes -W ignore::DeprecationWarning
+./doit.sh
+./doit.sh
+./doit.sh
+./doit.sh
+./doit.sh
+./doit.sh
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+bash doit.sh 
+bash doit.sh 
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+poetry run pytest
+poetry run pytest
+poetry run pytest
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+bash doit.sh
+poetry run textual run --dev development/app.py
+bash doit.sh
+bash doit.sh
+poetry run textual run --dev development/app.py
+bash doit.sh
+bash doit.sh
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual console -x SYSTEM -x EVENT -x DEBUG -x INFO
+ps ax
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py

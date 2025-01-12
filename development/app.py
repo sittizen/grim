@@ -1,32 +1,12 @@
-from grim.character import (
-    Character,
-)
-
-# from grim.character.stats import Attribute, Save
-from grim.character.layers import classes
-from textual import (
-    events,
-    on,
-)
-from textual.app import (
-    App as BaseApp,
-)
-from textual.app import (
-    ComposeResult,
-)
-from textual.containers import (
-    Container,
-)
-from textual.reactive import (
-    reactive,
-)
-from textual.widgets import (
-    Footer,
-    Header,
-    Label,
-    ListView,
-    Select,
-)
+from grim.character import Character
+from grim.character.layers import classes, races
+from grim.character.stats import Attributes, Saves
+from textual import events, on
+from textual.app import App as BaseApp
+from textual.app import ComposeResult
+from textual.containers import Container
+from textual.reactive import reactive
+from textual.widgets import Footer, Header, Label, ListItem, ListView, Select
 
 char: Character | None = None
 
@@ -35,6 +15,19 @@ class CharacterChoices(Container):  # type: ignore
     def compose(
         self,
     ) -> ComposeResult:
+        yield Select(
+            prompt="Race",
+            options=[
+                (
+                    "Human",
+                    races.Human,
+                ),
+                (
+                    "Elf",
+                    races.Elf,
+                ),
+            ],
+        )
         yield Select(
             prompt="Class",
             options=[
@@ -75,8 +68,7 @@ class AttributesSheet(Container):  # type: ignore
     def compose(
         self,
     ) -> ComposeResult:
-        # attribute_labels = [ListItem(AttributeLabel(name=a.name, id=f"attr_{a.name.lower()}")) for a in Attribute]
-        attribute_labels: list[str] = []
+        attribute_labels = [ListItem(AttributeLabel(name=a.name, id=f"attr_{a.name.lower()}")) for a in Attributes]
         yield Label(
             "Attributes",
             classes="head_label",
@@ -88,11 +80,10 @@ class SavesSheet(Container):  # type: ignore
     def compose(
         self,
     ) -> ComposeResult:
-        # sl = [ListItem(SaveLabel(name=s.name, id=f"save_{s.name.lower()}")) for s in Save]
-        # save_labels = sl[0:3]
-        # save_labels.append(ListItem(Label("")))
-        # save_labels.append(sl[-1])
-        save_labels: list[str] = []
+        sl = [ListItem(SaveLabel(name=s.name, id=f"save_{s.name.lower()}")) for s in Saves]
+        save_labels = sl[0:3]
+        save_labels.append(ListItem(Label("")))
+        save_labels.append(sl[-1])
         yield Label(
             "Saves",
             classes="head_label",
@@ -103,11 +94,7 @@ class SavesSheet(Container):  # type: ignore
 class App(BaseApp):  # type: ignore
     CSS_PATH = "app.tcss"
     BINDINGS = [
-        (
-            "c",
-            "create_char",
-            "Roll a new playing character",
-        ),
+        ("c", "create_char", "Roll a new playing character"),
     ]
     TITLE = "GRIM"
 
@@ -134,21 +121,30 @@ class App(BaseApp):  # type: ignore
         await self.mount(atts)
         await self.mount(savs)
         self.sub_title = "Create a new character"
+        await self.update_stats()
+
 
     @on(Select.Changed)  # type: ignore
     async def select_changed(
         self,
         event: Select.Changed,
     ) -> None:
-        pass
-        # char = Character.roll(class_=event.value)  # type: ignore
-        # for a in Attribute:
-        #    w = self.query_one(f"#attr_{a.name.lower()}")
-        #    w.is_main = a.name == char.main_attribute.name
-        #    w.av = char.attributes[a]
-        # for s in Save:
-        #    w = self.query_one(f"#save_{s.name.lower()}")
-        #    w.sv = char.saves[s].val
+        global char
+        if issubclass(event.value, classes.Class):
+            char.lay(event.value)
+        if issubclass(event.value, races.Race):
+            char.lay(event.value)
+        await self.update_stats()
+
+    async def update_stats(self):
+        for a in Attributes:
+            w = self.query_one(f"#attr_{a.name.lower()}")
+            w.av = getattr(char.attributes, a.name)
+        
+        for s in Saves:
+            w = self.query_one(f"#save_{s.name.lower()}")
+            w.sv = getattr(char.saves, s.name)
+
 
     async def on_key(
         self,

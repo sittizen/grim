@@ -43,11 +43,11 @@ class Character:
         obj = layer()
         if issubclass(layer, Class):
             if self.class_ is not None:
-                raise ValueError(f"{layer} already chosen")
+                self.remove(Class)
             self.class_ = obj  # type: ignore
         elif issubclass(layer, Race):
             if self.race is not None:
-                raise ValueError(f"{layer} already chosen")
+                self.remove(Race)
             self.race = obj  # type: ignore
         else:
             raise ValueError("Invalid Layer type")
@@ -83,11 +83,11 @@ class Character:
         obj: Layer | None
         if issubclass(layer, Class):
             if self.class_ is None:
-                raise ValueError(f"No {layer} to remove")
+                return
             obj = self.class_
         elif issubclass(layer, Race):
             if self.race is None:
-                raise ValueError(f"No {layer} to remove")
+                return
             obj = self.race
         else:
             raise ValueError("Invalid Layer type")
