@@ -8,6 +8,8 @@ from textual.containers import Container
 from textual.reactive import reactive
 from textual.widgets import Footer, Header, Label, ListItem, ListView, Select
 
+RACES = (races.Human, races.Elf)
+
 char: Character = Character.roll()
 
 
@@ -17,16 +19,16 @@ class CharacterChoices(Container):  # type: ignore
     ) -> ComposeResult:
         yield Select(
             prompt="Race",
-            options=[
-                (
-                    "Human",
-                    races.Human,
-                ),
-                (
-                    "Elf",
-                    races.Elf,
-                ),
-            ],
+            options=[(race.name, race) for race in RACES],
+            # (
+            # "Human",
+            # races.Human,
+            # ),
+            # (
+            # "Elf",
+            # races.Elf,
+            # ),
+            # ],
         )
         yield Select(
             prompt="Class",
@@ -130,10 +132,19 @@ class App(BaseApp):  # type: ignore
     ) -> None:
         global char
         char.remove(event.value)
+
         if issubclass(event.value, classes.Class):
             char.lay(event.value)
+            if char.class_ and char.class_.has_pending_choices:
+                for choice in char.class_.pending_choices:
+                    print(choice)
+
         if issubclass(event.value, races.Race):
             char.lay(event.value)
+            if char.race and char.race.has_pending_choices:
+                for choice in char.race.pending_choices:
+                    print(choice)
+
         await self.update_stats()
 
     async def update_stats(self) -> None:

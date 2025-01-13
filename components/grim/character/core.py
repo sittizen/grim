@@ -85,20 +85,14 @@ class Character:
             if self.class_ is None:
                 return
             obj = self.class_
+            self.class_ = None
         elif issubclass(layer, Race):
             if self.race is None:
                 return
             obj = self.race
+            self.race = None
         else:
             raise ValueError("Invalid Layer type")
 
         self.attributes.remove(obj.name)
         self.saves.remove(obj.name)
-        obj = None
-
-    def remove_class(self) -> None:
-        if self.class_ is None:
-            raise ValueError("No class to remove")
-        self.attributes.remove(self.class_.name)
-        self.saves.remove(self.class_.name)
-        self.class_ = None

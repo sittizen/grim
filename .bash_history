@@ -124,3 +124,42 @@ poetry run textual run --dev development/app.py
 poetry run textual run --dev development/app.py
 poetry run textual run --dev development/app.py
 poetry run textual run --dev development/app.py
+ /usr/bin/env /workspace/.cache/pypoetry/virtualenvs/workspace-xS3fZVNL-py3.13/bin/python /workspace/.vscode-server/extensions/ms-python.debugpy-2024.14.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 45607 -- /workspace/development/app.py 
+ cd /workspace ; /usr/bin/env /workspace/.cache/pypoetry/virtualenvs/workspace-xS3fZVNL-py3.13/bin/python /workspace/.vscode-server/extensions/ms-python.debugpy-2024.14.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 58209 -- /workspace/development/app.py 
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+bash doit.sh
+bash doit.sh
+bash doit.sh
+ cd /workspace ; /usr/bin/env /workspace/.cache/pypoetry/virtualenvs/workspace-xS3fZVNL-py3.13/bin/python /workspace/.vscode-server/extensions/ms-python.debugpy-2024.14.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 41617 -- /workspace/development/app.py 
+35;34;23M35;35;23Mexit
+exit
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run textual run --dev development/app.py
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+poetry run pytest
+exit

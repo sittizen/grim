@@ -72,7 +72,7 @@ def test_class_choice() -> None:
     with pytest.raises(ValueError):
         char.lay(Cleric)
 
-    char.remove_class()
+    char.remove(Class)
 
     assert char.check_complete()["class"] is False
 
@@ -97,3 +97,4 @@ def test_class_and_race_sum_layers() -> None:
 
     char.remove(Elf)
     assert char.attributes.DEX == base_dex + 1
+    assert char.race is None
