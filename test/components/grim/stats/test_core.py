@@ -38,7 +38,7 @@ def test_tweak() -> None:
     assert attributes.STR == 11
     assert attributes.INT == 10
 
-    attributes.remove("fighter")
+    attributes.shut("fighter")
     attributes.apply("mage")
     assert attributes.STR == 10
     assert attributes.INT == 11
@@ -51,6 +51,17 @@ def test_tweak() -> None:
         "fighter",
         "mage",
     }
-    attributes.remove("mage")
-    attributes.remove("fighter")
+    attributes.shut("mage")
+    attributes.shut("fighter")
     assert attributes.layers == set()
+
+    assert attributes._tweaks == {
+        "fighter": {"STR": 1},
+        "mage": {"INT": 1},
+    }
+
+    attributes.remove("fighter")
+
+    assert attributes._tweaks == {
+        "mage": {"INT": 1},
+    }

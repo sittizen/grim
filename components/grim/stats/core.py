@@ -29,7 +29,7 @@ class Stats:
             setattr(self, member.name, 0)
 
     def __getattribute__(self, name: str) -> Any:
-        if name in ("_enum", "_layers", "_tweaks", "tweak", "apply", "remove", "layers"):
+        if name in ("_enum", "_layers", "_tweaks", "tweak", "apply", "remove", "layers", "shut"):
             return super().__getattribute__(name)
         if name in self._enum.__members__:
             out = super().__getattribute__(name)
@@ -59,6 +59,11 @@ class Stats:
         self._layers.add(layer)
 
     def remove(self, layer: str) -> None:
+        self._tweaks.pop(layer, None)
+        if layer in self._layers:
+            self._layers.remove(layer)
+
+    def shut(self, layer: str) -> None:
         if layer not in self._layers:
             raise ValueError(f"Layer {layer} not applied")
         self._layers.remove(layer)

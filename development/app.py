@@ -8,7 +8,7 @@ from textual.containers import Container
 from textual.reactive import reactive
 from textual.widgets import Footer, Header, Label, ListItem, ListView, Select
 
-char: Character | None = None
+char: Character = Character.roll()
 
 
 class CharacterChoices(Container):  # type: ignore
@@ -123,28 +123,27 @@ class App(BaseApp):  # type: ignore
         self.sub_title = "Create a new character"
         await self.update_stats()
 
-
     @on(Select.Changed)  # type: ignore
     async def select_changed(
         self,
         event: Select.Changed,
     ) -> None:
         global char
+        char.remove(event.value)
         if issubclass(event.value, classes.Class):
             char.lay(event.value)
         if issubclass(event.value, races.Race):
             char.lay(event.value)
         await self.update_stats()
 
-    async def update_stats(self):
+    async def update_stats(self) -> None:
         for a in Attributes:
             w = self.query_one(f"#attr_{a.name.lower()}")
             w.av = getattr(char.attributes, a.name)
-        
+
         for s in Saves:
             w = self.query_one(f"#save_{s.name.lower()}")
             w.sv = getattr(char.saves, s.name)
-
 
     async def on_key(
         self,
