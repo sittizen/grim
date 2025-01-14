@@ -1,9 +1,5 @@
-from grim.dice import (
-    d,
-)
-from pytest import (
-    MonkeyPatch,
-)
+import pytest
+from grim.dice import d
 
 
 def mock_randrange(
@@ -92,16 +88,9 @@ def test_d1() -> None:
 
 
 def test_multiple_rolls(
-    monkeypatch: MonkeyPatch,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    assert (
-        d(
-            1,
-            1,
-            1,
-        )
-        == 3
-    )
+    assert d(1, 1, 1) == 3
 
     monkeypatch.setattr(
         "grim.dice.core.randrange",
@@ -130,7 +119,7 @@ def test_multiple_rolls(
 
 
 def test_adv_and_dis(
-    monkeypatch: MonkeyPatch,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(
         "grim.dice.core.randrange",
@@ -176,7 +165,7 @@ def test_adv_and_dis(
 
 
 def test_cap_low_and_high(
-    monkeypatch: MonkeyPatch,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(
         "grim.dice.core.randrange",

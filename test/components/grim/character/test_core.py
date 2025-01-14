@@ -69,7 +69,7 @@ def test_class_choice() -> None:
     assert char.saves.MFX == -1
     assert char.attributes.DEX == base_dex + 1
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="Class already chosen"):
         char.lay(Cleric)
 
     char.remove(Class)

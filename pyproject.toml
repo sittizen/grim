@@ -27,6 +27,9 @@ unsafe-fixes = true
 line-length = 120
 target-version = "py313"
 
+[tool.ruff.lint]
+select = ["BLE", "E1", "E4", "E7", "E9", "C90", "F", "I", "PLC", "PLE", "PT", "S2", "S5", "S6", "S7", "T20"]
+
 [tool.ruff.lint.pycodestyle]
 max-line-length = 120
 max-doc-length = 120

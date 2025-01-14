@@ -9,6 +9,7 @@ from textual.reactive import reactive
 from textual.widgets import Footer, Header, Label, ListItem, ListView, Select
 
 RACES = (races.Human, races.Elf)
+CLASSES = (classes.Fighter, classes.Cleric)
 
 char: Character = Character.roll()
 
@@ -20,15 +21,6 @@ class CharacterChoices(Container):  # type: ignore
         yield Select(
             prompt="Race",
             options=[(race.name, race) for race in RACES],
-            # (
-            # "Human",
-            # races.Human,
-            # ),
-            # (
-            # "Elf",
-            # races.Elf,
-            # ),
-            # ],
         )
         yield Select(
             prompt="Class",
@@ -137,13 +129,14 @@ class App(BaseApp):  # type: ignore
             char.lay(event.value)
             if char.class_ and char.class_.has_pending_choices:
                 for choice in char.class_.pending_choices:
-                    print(choice)
+                    pass
+                    # yield Select(prompt=choice, options=[])
 
         if issubclass(event.value, races.Race):
             char.lay(event.value)
             if char.race and char.race.has_pending_choices:
                 for choice in char.race.pending_choices:
-                    print(choice)
+                    pass
 
         await self.update_stats()
 
