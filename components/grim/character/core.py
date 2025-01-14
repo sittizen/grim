@@ -94,5 +94,6 @@ class Character:
         else:
             raise ValueError("Invalid Layer type")
 
+        # todo, when removing Class or Race the name must be found
         self.attributes.remove(obj.name)
         self.saves.remove(obj.name)

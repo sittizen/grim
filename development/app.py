@@ -24,16 +24,7 @@ class CharacterChoices(Container):  # type: ignore
         )
         yield Select(
             prompt="Class",
-            options=[
-                (
-                    "Fighter",
-                    classes.Fighter,
-                ),
-                (
-                    "Cleric",
-                    classes.Cleric,
-                ),
-            ],
+            options=[(class_.name, class_) for class_ in CLASSES],
         )
 
 
@@ -123,14 +114,23 @@ class App(BaseApp):  # type: ignore
         event: Select.Changed,
     ) -> None:
         global char
+        if event.value == Select.BLANK:
+            if event.control.prompt == "Class":
+                char.remove(classes.Class)
+            else:
+                char.remove(races.Race)
+            return
+
         char.remove(event.value)
 
         if issubclass(event.value, classes.Class):
             char.lay(event.value)
             if char.class_ and char.class_.has_pending_choices:
                 for choice in char.class_.pending_choices:
-                    pass
-                    # yield Select(prompt=choice, options=[])
+                    cc = self.query_one(CharacterChoices)
+                    cc.mount(
+                        Select(prompt=choice, options=[(a.name, v) for (a, v) in char.class_.pending_choices[choice]])
+                    )
 
         if issubclass(event.value, races.Race):
             char.lay(event.value)

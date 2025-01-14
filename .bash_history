@@ -163,3 +163,5 @@ poetry run pytest
 poetry run pytest
 poetry run pytest
 exit
+poetry run textual console -x SYSTEM -x EVENT -x DEBUG -x INFO
+exit

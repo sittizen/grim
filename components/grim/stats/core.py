@@ -15,7 +15,7 @@ class Tweak:
 class Stats:
     """Defines a logical group of stats, each with an integer value."""
 
-    def __init__(self, enum: type[Enum]):
+    def __init__(self, enum: type[Enum], modifiers: dict[tuple[int, int], int] = {}) -> None:
         self._enum = enum
         self._layers: set[str] = set()
         self._tweaks: dict[
