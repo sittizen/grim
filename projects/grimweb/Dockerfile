@@ -9,7 +9,5 @@ WORKDIR /app
 COPY dist/$wheel /app/$wheel
 RUN pip install --no-cache-dir --upgrade  /app/$wheel
 
-COPY files /
 EXPOSE 8000
-
 ENTRYPOINT ["textual", "serve", "-p", "8000", "-h", "0.0.0.0" , "/usr/local/lib/python3.13/site-packages/grim/textualweb/app.py"]

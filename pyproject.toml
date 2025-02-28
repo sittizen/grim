@@ -8,6 +8,7 @@ packages = [
     {include = "grim/dice",from = "components"},
     {include = "grim/stats",from = "components"},
     {include = "grim/character",from = "components"},
+    {include = "grim/textualweb",from = "bases"},
 ]
 
 

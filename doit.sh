@@ -10,9 +10,7 @@ poetry run ruff check --fix test/
 #poetry run ruff check --select I --fix test/
 poetry run ruff format test/
 
-poetry run mypy --pretty --strict --explicit-package-bases components
-poetry run mypy --pretty --strict --explicit-package-bases development
-poetry run mypy --pretty --strict --explicit-package-bases test
+poetry run mypy --pretty --strict .
 
 poetry install
 
