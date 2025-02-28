@@ -14,10 +14,11 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.13"
-textual = "^1.0.0"
+textual = "~1"
+textual-dev = "~1"
 
 [tool.poetry.group.dev.dependencies]
-textual-dev = "^1.7.0"
+textual-dev = "~1"
 ruff = "^0.8.6"
 pytest-icdiff = "^0.9"
 pytest-xdist = "^3.6.1"
